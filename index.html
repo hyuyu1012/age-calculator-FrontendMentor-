@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>Frontend Mentor | Age calculator app</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <form class="form">
+      <div class="form__row">
+        <div class="form__field">
+          <label for="input__day">DAY</label>
+          <input type="text" id="input__day" placeholder="DD">
+        </div>
+        <div class="form__field">
+          <label for="input__month">MONTH</label>
+          <input type="text" id="input__month" placeholder="MM">
+        </div>  
+        <div class="form__field">
+          <label for="input__year">YEAR</label>
+          <input type="text" id="input__year" placeholder="YYYY">
+        </div>
+      </div>  
+          <hr>  
+        <!--button 태그는 type을 안쓰면 기본값이  submit이다.-->
+        <button type="button" class="submit-button"></button>
+    </form> 
+    <div class="result">
+      <p><span class="span__year">--</span>years</p>
+      <p><span class="span__month">--</span>months</p>
+      <p><span class="span__day">--</span>days</p>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
