@@ -3,14 +3,7 @@ const spanYear = document.querySelector(".span__year");
 const spanMonth = document.querySelector(".span__month");
 const spanDay = document.querySelector(".span__day");
 
-
 const updateLiveTime = (birthYear, birthMonth, birthDay) => {
-
-  const today = new Date();
-  const currentYear = today.getFullYear();
-  const currentMonth = today.getMonth() + 1; // JS 월은 0~11
-  const currentDay = today.getDate();
-
   let resultYear, resultMonth, resultDay;
 
   if (currentMonth > birthMonth || (currentMonth === birthMonth && currentDay >= birthDay)) {
@@ -35,22 +28,20 @@ const updateLiveTime = (birthYear, birthMonth, birthDay) => {
     const prevMonth = new Date(currentYear, currentMonth - 1 - 1, 0); // 이전 달
     resultDay = currentDay + prevMonth.getDate() - birthDay;
   }
-  
   spanYear.textContent = resultYear;
   spanMonth.textContent = resultMonth;
   spanDay.textContent = resultDay;
 } 
 
-
 submitBtn.addEventListener("click", () => {
+  const today = new Date();
+  const currentYear = today.getFullYear();
+  const currentMonth = today.getMonth() + 1; // JS 월은 0~11
+  const currentDay = today.getDate();
+  
   const birthYear = Number(document.querySelector("#input__year").value);
   const birthMonth = Number(document.querySelector("#input__month").value);
   const birthDay = Number(document.querySelector("#input__day").value);
 
-  if(!Number.isInteger(birthYear) || !Number.isInteger(birthMonth) || !Number.isInteger(birthDay)) {
-    console.log("유효한 값이 아닙니다.")
-    return;
-  }
-  updateLiveTime(birthYear, birthMonth, birthDay);
-
+  // updateLiveTime(birthYear, birthMonth, birthDay);
 })

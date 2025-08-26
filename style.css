@@ -72,6 +72,11 @@ main {
   font-weight: 700;
 }
 
+.form__field > input:focus {
+  border-color: var(--primary-purple);
+  outline: none;
+}
+
 hr {
   width: 90%;
   background-color: var(--Grey-100);
