@@ -13,14 +13,17 @@
         <div class="form__field">
           <label for="input__day">DAY</label>
           <input type="text" id="input__day" placeholder="DD">
+          <p class="day__error"></p>
         </div>
         <div class="form__field">
           <label for="input__month">MONTH</label>
           <input type="text" id="input__month" placeholder="MM">
+          <p class="month__error"></p>          
         </div>  
         <div class="form__field">
           <label for="input__year">YEAR</label>
           <input type="text" id="input__year" placeholder="YYYY">
+          <p class="year__error"></p>          
         </div>
       </div>  
           <hr>  
@@ -28,9 +31,9 @@
         <button type="button" class="submit-button"></button>
     </form> 
     <div class="result">
-      <p><span class="span__year">--</span>years</p>
-      <p><span class="span__month">--</span>months</p>
-      <p><span class="span__day">--</span>days</p>
+      <p class="p__result"><span class="span__year">--</span>years</p>
+      <p class="p__result"><span class="span__month">--</span>months</p>
+      <p class="p__result"><span class="span__day">--</span>days</p>
     </div>
   </main>
   <script src="script.js"></script>
