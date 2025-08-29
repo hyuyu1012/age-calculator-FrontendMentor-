@@ -1,3 +1,14 @@
+import {
+  checkEmptyYear,
+  checkEmptyMonth,
+  checkEmptyDay,
+  isValidYear,
+  isValidMonth,
+  isValidDay,
+  checkPast,
+  isValidDate,
+} from "./error.js";
+
 const submitBtn = document.querySelector(".submit-button");
 const spanYear = document.querySelector(".span__year");
 const spanMonth = document.querySelector(".span__month");
@@ -9,7 +20,6 @@ const yearError = document.querySelector(".year__error");
 
 const updateLiveTime = (birthYear, birthMonth, birthDay) => {
   const today = new Date();
-
   const currentYear = today.getFullYear();
   const currentMonth = today.getMonth() + 1; // JS 월은 0~11
   const currentDay = today.getDate();
@@ -45,7 +55,4 @@ submitBtn.addEventListener("click", () => {
   const birthYear = Number(document.querySelector("#input__year").value);
   const birthMonth = Number(document.querySelector("#input__month").value);
   const birthDay = Number(document.querySelector("#input__day").value);
-
-  checkEmpty(birthYear, birthMonth, birthDay);
-  updateLiveTime(birthYear, birthMonth, birthDay);
 })
