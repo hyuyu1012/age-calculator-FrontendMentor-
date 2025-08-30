@@ -51,8 +51,52 @@ const updateLiveTime = (birthYear, birthMonth, birthDay) => {
   spanDay.textContent = resultDay;
 } 
 
-submitBtn.addEventListener("click", () => {  
-  const birthYear = Number(document.querySelector("#input__year").value);
-  const birthMonth = Number(document.querySelector("#input__month").value);
-  const birthDay = Number(document.querySelector("#input__day").value);
+submitBtn.addEventListener("click", () => {
+  const birthYear = (document.querySelector("#input__year").value);
+  const birthMonth = (document.querySelector("#input__month").value);
+  const birthDay = (document.querySelector("#input__day").value);
+  
+  let emptyFlag = false;
+  let validFlag = false;
+
+  if(checkEmptyYear(birthYear)) {
+    yearError.textContent = "This field is required";
+    emptyFlag = true;
+  }
+  if(checkEmptyMonth(birthMonth)) {
+    monthError.textContent= "This field is required";
+    emptyFlag = true;
+  }
+  if(checkEmptyDay(birthDay)) {
+    dayError.textContent= "This field is required";
+    emptyFlag = true;
+  }
+  if(emptyFlag) {
+    return;
+  }
+
+  if(!isValidYear(Number(birthYear))) {
+    yearError.textContent = "Must be a valid Year";
+    validFlag = true;
+  }
+  if(!isValidMonth(Number(birthMonth))) {
+    monthError.textContent = "Must be a valid Month";
+    validFlag = true;
+  }
+  if(!isValidDay(Number(birthDay))) {
+    dayError.textContent = "Must be a valid Day";
+    validFlag = true;
+  }
+  if(validFlag){
+    return;
+  }
+  if(!checkPast(Number(birthYear), Number(birthMonth), Number(birthDay))) {
+    yearError.textContent = "Must be in the past";
+    return;
+  }
+  if(!isValidDate(Number(birthYear), Number(birthMonth), Number(birthDay))) {
+    dayError.textContent = "Must be a valid date";
+    return;
+  }
+  updateLiveTime(Number(birthYear), Number(birthMonth), Number(birthDay));
 })

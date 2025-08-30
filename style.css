@@ -114,8 +114,8 @@ span {
   color: var(--primary-purple);
 }
 
-.error {
-  /* display: none; */
+.day__error, .month__error, .year__error
+ {
   color: var(--primary-red);
   font-style: italic;
   font-size: 0.8rem;
