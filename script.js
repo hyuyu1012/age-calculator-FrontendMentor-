@@ -9,6 +9,8 @@ import {
   isValidDate,
 } from "./error.js";
 
+// js의 style property는 해당 요소의 inline css를 의미한다.
+ 
 const submitBtn = document.querySelector(".submit-button");
 const spanYear = document.querySelector(".span__year");
 const spanMonth = document.querySelector(".span__month");
@@ -17,6 +19,17 @@ const spanDay = document.querySelector(".span__day");
 const dayError = document.querySelector(".day__error");
 const monthError = document.querySelector(".month__error");
 const yearError = document.querySelector(".year__error");
+
+const yearInput = document.querySelector("#input__year");
+const monthInput = document.querySelector("#input__month");
+const dayInput = document.querySelector("#input__day");
+
+const year__label = document.querySelector();
+const month__label = document.querySelector();
+const day__label = document.querySelector();
+
+const root = document.documentElement;
+const primaryRed = getComputedStyle(root).getPropertyValue('--primary-red').trim();
 
 const updateLiveTime = (birthYear, birthMonth, birthDay) => {
   const today = new Date();
@@ -51,24 +64,33 @@ const updateLiveTime = (birthYear, birthMonth, birthDay) => {
   spanDay.textContent = resultDay;
 } 
 
+const resetAll = () => {
+
+
+}
+
+
 submitBtn.addEventListener("click", () => {
-  const birthYear = (document.querySelector("#input__year").value);
-  const birthMonth = (document.querySelector("#input__month").value);
-  const birthDay = (document.querySelector("#input__day").value);
-  
+  const birthYear = (yearInput.value);
+  const birthMonth = (monthInput.value);
+  const birthDay = (dayInput.value);
+
   let emptyFlag = false;
   let validFlag = false;
 
   if(checkEmptyYear(birthYear)) {
     yearError.textContent = "This field is required";
+    yearInput.style.borderColor = primaryRed;
     emptyFlag = true;
   }
   if(checkEmptyMonth(birthMonth)) {
     monthError.textContent= "This field is required";
+    monthInput.style.borderColor = primaryRed;
     emptyFlag = true;
   }
   if(checkEmptyDay(birthDay)) {
     dayError.textContent= "This field is required";
+    dayInput.style.borderColor = primaryRed;
     emptyFlag = true;
   }
   if(emptyFlag) {
@@ -77,14 +99,17 @@ submitBtn.addEventListener("click", () => {
 
   if(!isValidYear(Number(birthYear))) {
     yearError.textContent = "Must be a valid Year";
+    yearInput.style.borderColor = primaryRed;
     validFlag = true;
   }
   if(!isValidMonth(Number(birthMonth))) {
     monthError.textContent = "Must be a valid Month";
+    monthInput.style.borderColor = primaryRed;
     validFlag = true;
   }
   if(!isValidDay(Number(birthDay))) {
     dayError.textContent = "Must be a valid Day";
+    dayInput.style.borderColor = primaryRed;
     validFlag = true;
   }
   if(validFlag){
@@ -92,10 +117,12 @@ submitBtn.addEventListener("click", () => {
   }
   if(!checkPast(Number(birthYear), Number(birthMonth), Number(birthDay))) {
     yearError.textContent = "Must be in the past";
+    yearInput.style.borderColor = primaryRed;
     return;
   }
   if(!isValidDate(Number(birthYear), Number(birthMonth), Number(birthDay))) {
     dayError.textContent = "Must be a valid date";
+    dayInput.style.borderColor = primaryRed;
     return;
   }
   updateLiveTime(Number(birthYear), Number(birthMonth), Number(birthDay));
