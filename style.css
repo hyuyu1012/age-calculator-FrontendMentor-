@@ -118,5 +118,6 @@ span {
  {
   color: var(--primary-red);
   font-style: italic;
+  height: 10%;
   font-size: 0.8rem;
 }
